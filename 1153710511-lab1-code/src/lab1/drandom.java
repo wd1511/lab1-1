@@ -1,4 +1,5 @@
 //here is the third change for github by huangxu
+//here is the third change in branch b2
 package lab1;
 
 /*走过的顶点设为绿色，

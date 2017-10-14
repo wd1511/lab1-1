@@ -1,4 +1,5 @@
 //here is the second change for github by huangxu
+//here is the second change in branch b2
 package lab1;
 
 import java.awt.*;
