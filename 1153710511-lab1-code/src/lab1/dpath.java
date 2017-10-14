@@ -1,5 +1,9 @@
 //here is the first change for github by huangxu 
+<<<<<<< HEAD
 //here is the first change for branch b1
+=======
+//here is the first change in branch c4
+>>>>>>> c4
 
 package lab1;
 

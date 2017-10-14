@@ -1,4 +1,9 @@
+<<<<<<< HEAD
 //here is the forth change for branch b1
+=======
+//here is the forth change in branch c4
+>>>>>>> c4
+//here is to fixed the conflict4
 package lab1;
 import java.lang.*;
 
