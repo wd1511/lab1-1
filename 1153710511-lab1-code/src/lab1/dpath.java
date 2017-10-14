@@ -1,9 +1,14 @@
 //here is the first change for github by huangxu 
 <<<<<<< HEAD
+<<<<<<< HEAD
 //here is the first change for branch b1
 =======
 //here is the first change in branch c4
 >>>>>>> c4
+=======
+//here is the first change in branch b2
+>>>>>>> b2
+//here is the first change for 1153710511
 
 package lab1;
 

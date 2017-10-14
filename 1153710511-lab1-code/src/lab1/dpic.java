@@ -1,10 +1,15 @@
 //here is the second change for github by huangxu
 <<<<<<< HEAD
+<<<<<<< HEAD
 //here is the second change for branch b1
 =======
 //here is the second change in branch c4
 >>>>>>> c4
 //here is to fixed the conflict2
+=======
+//here is the second change in branch b2
+>>>>>>> b2
+//here is the second change for 1153710511
 package lab1;
 
 import java.awt.*;

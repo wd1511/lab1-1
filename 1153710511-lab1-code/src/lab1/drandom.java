@@ -1,10 +1,15 @@
 //here is the third change for github by huangxu
 <<<<<<< HEAD
+<<<<<<< HEAD
 //here is the third change for branch b1
 =======
 //here is the third change in branch c4
 >>>>>>> c4
 //here is to fixed the conflict3
+=======
+//here is the third change in branch b2
+>>>>>>> b2
+//here is the third change for 1153710511
 package lab1;
 
 /*走过的顶点设为绿色，
