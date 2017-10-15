@@ -1,4 +1,5 @@
 //here is the second change for github by huangxu
+//here is the second change with mate
 package lab1;
 
 import java.awt.*;
