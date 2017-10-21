@@ -1,5 +1,6 @@
 //here is the first change for github by huangxu 
 //here is the first change with mate
+//final 变量名
 
 package lab1;
 
@@ -18,8 +19,8 @@ public class dpath extends JFrame{
   /** .
   */
   
-  public void showDirectedGraph(graph p) {
-    mp = new MyPanel2(p);
+  public void showDirectedGraph(graph picture) {
+    mp = new MyPanel2(picture);
     //this.setAlwaysOnTop(true);
     //mp.showDirectedGraph(p);
     this.add(mp);
@@ -36,14 +37,14 @@ public class dpath extends JFrame{
   }
 }
 class MyPanel2 extends JPanel{
-  private graph p1;
-  private int []aaaa; 
+  private final graph p1;
+  private final int []aaaa; 
   int len = 0;
   
-  public MyPanel2(graph p) {
-    p1 = p;
-    String stmp = JOptionPane.showInputDialog("输入两个单词：\n");
-    String []sstmp = stmp.split(" ");
+  public MyPanel2(graph picture) {
+    p1 = picture;
+    final String stmp = JOptionPane.showInputDialog("输入两个单词：\n");
+    final String []sstmp = stmp.split(" ");
     int flagw1 = p1.search(sstmp[0]);
     int flagw2 = p1.search(sstmp[1]);
     aaaa = p1.calcShortestPath(sstmp[0],sstmp[1]);
@@ -65,24 +66,24 @@ class MyPanel2 extends JPanel{
   
   public void paint(Graphics g) {
     super.paint(g);
-    int m = 1000;
-    int n = 800;
-    int k = p1.get_num();
+    int madd = 1000;
+    int nadd = 800;
+    int kadd = p1.get_num();
     int []m1 = new int[100];
     int []n1 = new int[100];
     int []m2 = new int[100]; 
     int []n2 = new int[100];
     g.setColor(Color.BLACK);
     //确定位置，绘制图
-    for (int i = 0;i < k;i++) {
+    for (int i = 0;i < kadd;i++) {
       g.setColor(Color.BLACK);
       //System.out.println(i);
-      m1[i] = (int)(m / 2 + (9 - k / 10) * k * Math.cos(2 * Math.PI * i / k));
-      n1[i] = (int)(n * 0.45 + (9 - k / 10) * k * Math.sin(2 * Math.PI * i / k));
-      m2[i] = (int)(m / 2 + ((9 - k / 10) * k - 15 + k / 10)
-               * Math.cos(2 * Math.PI * i / k) + 15 - k / 10);
-      n2[i] = (int)(n * 0.45 + ((9 - k / 10) * k - 15 + k / 10) 
-               * Math.sin(2 * Math.PI * i / k) + 15 - k / 10);
+      m1[i] = (int)(madd / 2 + (9 - kadd / 10) * kadd * Math.cos(2 * Math.PI * i / kadd));
+      n1[i] = (int)(nadd * 0.45 + (9 - kadd / 10) * kadd * Math.sin(2 * Math.PI * i / kadd));
+      m2[i] = (int)(madd / 2 + ((9 - kadd / 10) * kadd - 15 + kadd / 10)
+               * Math.cos(2 * Math.PI * i / kadd) + 15 - kadd / 10);
+      n2[i] = (int)(nadd * 0.45 + ((9 - kadd / 10) * kadd - 15 + kadd / 10) 
+               * Math.sin(2 * Math.PI * i / kadd) + 15 - kadd / 10);
       int flag2 = 1;
       while (flag2 <= aaaa[0]) {
         if (i + 1 == aaaa[flag2]) {
@@ -90,13 +91,13 @@ class MyPanel2 extends JPanel{
         }
         flag2++;
       }
-      g.drawOval(m1[i],n1[i],30 - k / 5,30 - k / 5);
+      g.drawOval(m1[i],n1[i],30 - kadd / 5,30 - kadd / 5);
       g.setColor(Color.BLACK);
       g.drawString("" + p1.str[i + 1],m1[i] + 6,n1[i]);
     }
     g.setColor(Color.BLUE);
-    for (int i1 = 0;i1 < k;i1++) {
-      for (int j1 = 0;j1 < k;j1++) {
+    for (int i1 = 0;i1 < kadd;i1++) {
+      for (int j1 = 0;j1 < kadd;j1++) {
         if (p1.a[i1 + 1][j1 + 1] != 0) {
           int flag1 = 1;
           g.setColor(Color.BLUE);
@@ -108,12 +109,12 @@ class MyPanel2 extends JPanel{
           }
           g.drawLine(m2[i1], n2[i1], m2[j1], n2[j1]);
           g.drawString("" + p1.a[i1 + 1][j1 + 1],(m2[i1] + m2[j1]) / 2,(n2[i1] + n2[j1]) / 2);
-          int t1 = (k / 3 + 5) * m2[j1] + m2[i1] + n2[j1] - n2[i1];
-          int t2 = (k / 3 + 5) * n2[j1] + n2[i1] - m2[j1] + m2[i1];
-          int t3 = (k / 3 + 5) * m2[j1] + m2[i1] - n2[j1] + n2[i1];
-          int t4 = (k / 3 + 5) * n2[j1] + n2[i1] + m2[j1] - m2[i1];
-          g.drawLine(t1 / (k / 3 + 6),t2 / (k / 3 + 6),m2[j1],n2[j1]);
-          g.drawLine(t3 / (k / 3 + 6),t4 / (k / 3 + 6),m2[j1],n2[j1]);
+          final int t1add = (kadd / 3 + 5) * m2[j1] + m2[i1] + n2[j1] - n2[i1];
+          final int t2add = (kadd / 3 + 5) * n2[j1] + n2[i1] - m2[j1] + m2[i1];
+          final int t3add = (kadd / 3 + 5) * m2[j1] + m2[i1] - n2[j1] + n2[i1];
+          final int t4add = (kadd / 3 + 5) * n2[j1] + n2[i1] + m2[j1] - m2[i1];
+          g.drawLine(t1add / (kadd / 3 + 6),t2add / (kadd / 3 + 6),m2[j1],n2[j1]);
+          g.drawLine(t3add / (kadd / 3 + 6),t4add / (kadd / 3 + 6),m2[j1],n2[j1]);
         }
       }
     }
