@@ -1,3 +1,4 @@
+//多了equals
 package lab1;
 
 public class graph {
@@ -22,21 +23,21 @@ public class graph {
    * 添加节点
   */
   
-  public void add_node(String s) {
+  public void add_node(String sadd) {
     int flag = 0;
-    flag = search(s);
+    flag = search(sadd);
     if (flag == 0) {
       num++;
-      str[num] = s;
+      str[num] = sadd;
     }
   }
   /** .
    * 添加边
    */ 
   
-  public void add_edge(String s1,String s2) {
-    int s1index = search(s1);
-    int s2index = search(s2);
+  public void add_edge(String s1add,String s2add) {
+    final int s1index = search(s1add);
+    final int s2index = search(s2add);
     a[s1index][s2index]++;
   }
   /** .
@@ -71,11 +72,11 @@ public class graph {
    * 查询顶点
    */ 
   
-  public int search(String s) {
-    int i;
-    for (i = 1;i <= num;i++) {
-      if (s.equals(str[i])) {
-        return i;
+  public int search(String sadd) {
+    int iadd;
+    for (iadd = 1;iadd <= num;iadd++) {
+      if (sadd.equals(str[iadd])) {
+        return iadd;
       }
     }
     return 0;
@@ -84,9 +85,9 @@ public class graph {
    * 寻找w1和w2之间的桥接词
    */ 
   
-  public String queryBridgeWords(String w1,String w2) {
-    int w1index = search(w1);
-    int w2index = search(w2);
+  public String queryBridgeWords(String w1add,String w2add) {
+    final int w1index = search(w1add);
+    final int w2index = search(w2add);
     if (w1index == 0 || w2index == 0) {
       return " ";
     }
@@ -98,7 +99,7 @@ public class graph {
         }
       }
     }
-    if (bridge == "") {
+    if (bridge.equals("")) {
       return null;
     } else {
       return bridge;
@@ -134,87 +135,87 @@ public class graph {
    * 输出i和j间的最短路径
    */
   
-  public void distance(int i,int j) {
-    System.out.println(d[i][j]);
+  public void distance(int iadd,int jadd) {
+    System.out.println(d[iadd][jadd]);
   }
   /** .
    * 打印路径
    */
 
-  public void path(int i,int j) {
-    while (i != j) {
-      System.out.print(i + "->");
-      i = p[i][j];
+  public void path(int iadd,int jadd) {
+    while (iadd != jadd) {
+      System.out.print(iadd + "->");
+      iadd = p[iadd][jadd];
     }
-    System.out.println(j);
+    System.out.println(jadd);
   }
   /** .
    * 生成桥接文本
    */
 
   public String generateNewText(String inputText) {
-    String []bshuzu = inputText.split(" ");
-    String bb = "";
+    final String []bshuzu = inputText.split(" ");
+    String bbadd = "";
     for (int ii = 0;ii < bshuzu.length - 1;ii++) {
-      String b = this.queryBridgeWords(bshuzu[ii], bshuzu[ii + 1]);
+      final String badd = this.queryBridgeWords(bshuzu[ii], bshuzu[ii + 1]);
       //String []ba0=b.split(" ");
-      String p;
-      if (b == null || b == " ") {
-        p = "";
+      String padd;
+      if (badd == null || badd == " ") {
+        padd = "";
       } else {
-        String []ba0 = b.split(" ");
+        String []ba0 = badd.split(" ");
         if (ba0.length == 1) {
-          p = ba0[0];
+          padd = ba0[0];
         } else {
-          p = ba0[1];
+          padd = ba0[1];
         }
       }
       //System.out.println("fsadfasf "+ba0[1]);
-      if (p != null) {
-        if (bb == "") {
-          bb = bb + bshuzu[ii] + " " + p;
+      if (padd != null) {
+        if (bbadd == "") {
+          bbadd = bbadd + bshuzu[ii] + " " + p;
         } else {
-          bb = bb + " " + bshuzu[ii] + " " + p;
+          bbadd = bbadd + " " + bshuzu[ii] + " " + p;
         }
       } else {
-        if (bb == "") {
-          bb = bb + bshuzu[ii];
+        if (bbadd == "") {
+          bbadd = bbadd + bshuzu[ii];
         } else {
-          bb = bb + " " + bshuzu[ii];
+          bbadd = bbadd + " " + bshuzu[ii];
         }
       }
     }
-    if (bb == "") {
-      bb = bb + bshuzu[bshuzu.length - 1];
+    if (bbadd == "") {
+      bbadd = bbadd + bshuzu[bshuzu.length - 1];
     } else {
-      bb = bb + " " + bshuzu[bshuzu.length - 1];
+      bbadd = bbadd + " " + bshuzu[bshuzu.length - 1];
     }
-    return bb;
+    return bbadd;
   }
   /** .
    * 计算最短路径
    */
 
-  public int[] calcShortestPath(String word1, String word2) {
-    String s = "";
+  public int[] calcShortestPath(final String word1, final String word2) {
+    String sadd = "";
     int []aaa = new int[100];
     this.floyd();
     int index1 = search(word1);
-    int index2 = search(word2);
+    final int index2 = search(word2);
     if (d[index1][index2] >= 100000) {
       return aaa;
     }
     while (index1 != index2) {
       //System.out.print(i+"->");
-      s = s + " " + str[index1] + "->";
+      sadd = sadd + " " + str[index1] + "->";
       aaa[0]++;
       aaa[aaa[0]] = index1;
       index1 = p[index1][index2];
     }
-    s = s + str[index2];
+    sadd = sadd + str[index2];
     aaa[0]++;
     aaa[aaa[0]] = index2;
-    System.out.println(s);
+    System.out.println(sadd);
     return aaa;
   }
   /** .
@@ -224,10 +225,10 @@ public class graph {
   public int[] randomwalk() {
     int []aaa = new int[100];
     String walk = "";
-    int x = 1 + (int)(Math.random() * num);
-    aaa[1] = x;
+    int xadd = 1 + (int)(Math.random() * num);
+    aaa[1] = xadd;
     int shumu = 1;
-    walk = str[x];
+    walk = str[xadd];
     int endflag = 0;
     int findflag = 0;
     int j = 0;
@@ -235,19 +236,19 @@ public class graph {
       findflag = 0; 
       //System.out.print(x);
       int xiangling = 0;
-      int []aa = new int[100];
+      int []aaadd = new int[100];
       for (int i = 1;i <= num;i++) {
-        if (a[x][i] > 0) {
+        if (a[xadd][i] > 0) {
           xiangling++;
-          aa[xiangling] = i;
+          aaadd[xiangling] = i;
         }
       }
       if (xiangling == 0) {
         break;
       }
       j = 1 + (int)(Math.random() * xiangling);
-      walk = walk + " " + str[aa[j]];
-      aaa[++shumu] = aa[j];
+      walk = walk + " " + str[aaadd[j]];
+      aaa[++shumu] = aaadd[j];
       //System.out.println(j);
       String []chongfu;
       chongfu = walk.split(" ");
@@ -257,7 +258,7 @@ public class graph {
           endflag = 1;
         }
       } 
-      x = aa[j];
+      xadd = aaadd[j];
     }
     System.out.println(walk);
     aaa[0] = shumu;
